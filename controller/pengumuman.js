@@ -5,25 +5,23 @@ let controller = {}
 
 controller.post = async function (req, res) {
 
-    // const pengumuman_id = req.body.pengumuman_id
-    // const pengumuman_judul = req.body.pengumuman_judul
-    // const pengumuman_deskripsi = req.body.pengumuman_deskripsi
-    // const pengumuman_tanggal = req.body.pengumuman_tanggal
-    // const pengumuman_pembuat = req.body.pengumuman_pembuat
+    const pengumuman_id = req.body.pengumuman_id
+    const pengumuman_judul = req.body.pengumuman_judul
+    const pengumuman_deskripsi = req.body.pengumuman_deskripsi
+    const pengumuman_tanggal = req.body.pengumuman_tanggal
+    const pengumuman_pembuat = req.body.pengumuman_pembuat
 
-    // const alumni = await model.PengumumanModel.create({
-    //     pengumuman_id,
-    //     pengumuman_judul,
-    //     pengumuman_deskripsi,
-    //     pengumuman_tanggal,
-    //     pengumuman_pembuat
+    const alumni = await model.PengumumanModel.create({
+        pengumuman_judul,
+        pengumuman_deskripsi,
+        pengumuman_pembuat
 
-    // })
+    })
 
     const message = {
         notification: {
-            title: 'Title of your notification',
-            body: 'Body of your notification'
+            title: pengumuman_judul,
+            body: pengumuman_judul
         },
         topic: "versi1",
     };
