@@ -34,4 +34,7 @@ router.get('/prodi', controller.prodi);
 
 router.post('/pengumuman/post', controller.pengumuman.post);
 
+router.get('/penugasan', controller.penugasan.show);
+
+
 module.exports = router

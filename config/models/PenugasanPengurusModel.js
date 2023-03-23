@@ -4,7 +4,7 @@ const db = require("../database/mysql");
 const penugasan = require("./PenugasanModel")
 const pengurus = require("./PengurusModel")
 
-const PenugsanPengurusModel = db.define('penugasan', {
+const PenugsanPengurusModel = db.define('penugasan_pengurus', {
     // Model attributes are defined here
     id: {
         type: DataTypes.INTEGER,

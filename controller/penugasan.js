@@ -18,7 +18,7 @@ controller.show = async function (req, res) {
 
         })
     } else if (status == "pengurus") {
-        penugasan = await model.PengurusModel.findAll({
+        penugasan = await model.PenugasanPengurusModel.findAll({
             where: { nim: nim },
             include: [
                 { model: model.PengurusModel },
