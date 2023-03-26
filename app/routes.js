@@ -31,6 +31,7 @@ router.get('/profile', controller.profile.show);
 
 router.get('/fakultas', controller.fakultas);
 router.get('/prodi', controller.prodi);
+router.get('/bidang', controller.bidang);
 
 router.post('/pengumuman/post', controller.pengumuman.post);
 

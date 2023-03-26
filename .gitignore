@@ -1,3 +1,4 @@
 .env
 node_modules
 sima-orbit-firebase-adminsdk-qv5yi-691f48b4a3.json
+uploads/*
