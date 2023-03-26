@@ -17,8 +17,6 @@ controller.fakultas = async (req, res) => {
         messsage: "find all",
         fakultas
     });
-
-
 };
 controller.prodi = async (req, res) => {
 

@@ -78,7 +78,7 @@ controller.login = async (req, res) => {
 
     //validation Data Check
     const validationError = validation.loginValidation(req.body).error
-    if (validationError) return res.status(400).json({ message: validationError.details[0].message })
+    if (validationError) return res.status(400).json({ status: "failed", message: validationError.details[0].message })
 
     const anggota = await model.AnggotaModel.findOne({ where: { nim: nim } })
     const pengurus = await model.PengurusModel.findOne({ where: { nim: nim } })
@@ -90,10 +90,10 @@ controller.login = async (req, res) => {
         if (anggota.active == true) {
             // //check password
             const validPassword = await bcrypt.compare(password, anggota.password)
-            if (!validPassword) return res.status(400).json({ message: "Email or password wrong!" })
+            if (!validPassword) return res.status(400).json({ status: "failed", message: "Email or password wrong!" })
 
             //create an assign a token
-            const token = jwt.sign({ nim: anggota.nim, status: "amggota" }, process.env.TOKEN_SECRET)
+            const token = jwt.sign({ nim: anggota.nim, nama: anggota.nama, bidang_id: anggota.bidang_id, status: "amggota" }, process.env.TOKEN_SECRET)
             res.header("auth-token", token)
 
             res.json({
