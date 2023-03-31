@@ -27,13 +27,14 @@ const controller = require("../controller/index")
 router.post('/login', controller.auth.login);
 router.post('/register', upload.single('foto'), controller.auth.register);
 
-router.get('/profile', controller.profile.show);
+router.get('/profile', tokenValidate, controller.profile.show);
 
 router.get('/fakultas', controller.fakultas);
 router.get('/prodi', controller.prodi);
 router.get('/bidang', controller.bidang);
 
 router.post('/pengumuman/post', controller.pengumuman.post);
+router.get('/pengumuman', controller.pengumuman.show);
 
 router.get('/penugasan', controller.penugasan.show);
 

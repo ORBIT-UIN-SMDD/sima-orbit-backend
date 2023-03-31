@@ -63,7 +63,7 @@ const AlumniModel = db.define('alumni', {
 }, {
     // Other model options go here
     freezeTableName: true,
-    timestamps : false
+    timestamps: false
 });
 
 // console.log(User === db.models.User); // true

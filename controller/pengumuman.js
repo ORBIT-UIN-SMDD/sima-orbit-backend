@@ -11,7 +11,7 @@ controller.post = async function (req, res) {
     const pengumuman_tanggal = req.body.pengumuman_tanggal
     const pengumuman_pembuat = req.body.pengumuman_pembuat
 
-    const alumni = await model.PengumumanModel.create({
+    const pengumuman = await model.PengumumanModel.create({
         pengumuman_judul,
         pengumuman_deskripsi,
         pengumuman_pembuat
@@ -41,5 +41,24 @@ controller.post = async function (req, res) {
 
 
 };
+
+controller.show = async function (req, res) {
+
+    const pengumuman = await model.PengumumanModel.findAll({
+
+    })
+
+    res.json({
+        status: "success",
+        messsage: "find all",
+        pengumuman
+
+    });
+
+
+
+};
+
+
 
 module.exports = controller;

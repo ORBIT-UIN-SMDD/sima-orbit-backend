@@ -13,7 +13,7 @@ controller.bidang = async (req, res) => {
     res.json({
         status: "success",
         messsage: "find all",
-        bidang 
+        bidang
     });
 };
 

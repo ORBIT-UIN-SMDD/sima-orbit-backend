@@ -4,8 +4,8 @@ let controller = {}
 
 controller.show = async function (req, res) {
 
-    const status = req.query.status
-    const nim = req.query.nim
+    const status = req.user.status
+    const nim = req.user.nim
 
     let profile = {};
     if (status == "anggota") {

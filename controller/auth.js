@@ -93,7 +93,7 @@ controller.login = async (req, res) => {
             if (!validPassword) return res.status(400).json({ status: "failed", message: "Email or password wrong!" })
 
             //create an assign a token
-            const token = jwt.sign({ nim: anggota.nim, nama: anggota.nama, bidang_id: anggota.bidang_id, status: "amggota" }, process.env.TOKEN_SECRET)
+            const token = jwt.sign({ nim: anggota.nim, nama: anggota.nama, bidang_id: anggota.bidang_id, status: "anggota" }, process.env.TOKEN_SECRET)
             res.header("auth-token", token)
 
             res.json({
@@ -114,7 +114,7 @@ controller.login = async (req, res) => {
         if (!validPassword) return res.status(400).json({ message: "Email or password wrong!" })
 
         //create an assign a token
-        const token = jwt.sign({ nim: pengurus.nim, status: "pengurus" }, process.env.TOKEN_SECRET)
+        const token = jwt.sign({ nim: pengurus.nim, nama: pengurus.nama, bidang_id: pengurus.bidang_id, status: "pengurus" }, process.env.TOKEN_SECRET)
         res.header("auth-token", token)
 
         res.json({
@@ -130,7 +130,7 @@ controller.login = async (req, res) => {
         if (!validPassword) return res.status(400).json({ message: "Email or password wrong!" })
 
         //create an assign a token
-        const token = jwt.sign({ nim: alumni.nim, status: "alumni" }, process.env.TOKEN_SECRET)
+        const token = jwt.sign({ nim: alumni.nim, nama: alumni.nama, bidang_id: "-", status: "alumni" }, process.env.TOKEN_SECRET)
         res.header("auth-token", token)
 
         res.json({
