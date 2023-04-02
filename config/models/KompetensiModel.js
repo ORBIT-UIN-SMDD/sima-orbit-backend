@@ -1,47 +1,42 @@
 const { DataTypes } = require('sequelize');
 const db = require("../database/mysql");
 
-const AgendaModel = db.define('agenda', {
+const bidang = require("./BidangModel")
+const anggota = require("./AnggotaModel")
+
+const KompetensiModel = db.define('Kompetensi', {
     // Model attributes are defined here
-    sertifkat_no : {
-        type: DataTypes.INTEGER,
+    sertifkat_no: {
+        type: DataTypes.STRING,
         allowNull: false,
         primaryKey: true
     },
-    agenda_nama: {
+    nim: {
+        type: DataTypes.INTEGER,
+        allowNull: true
+    },
+    bidang_id: {
+        type: DataTypes.INTEGER,
+        allowNull: true
+    },
+    kompetensi_nama: {
         type: DataTypes.STRING,
         allowNull: true
     },
-    agenda_deskripsi: {
+    kompetensi_untuk: {
         type: DataTypes.STRING,
         allowNull: true
     },
-    agenda_mulai: {
+    kompetensi_diverifikasi_oleh: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+    kompetensi_tanggal: {
         type: DataTypes.DATEONLY,
         allowNull: true
     },
-    agenda_selesai: {
-        type: DataTypes.DATEONLY,
-        allowNull: true
-    },
-    agenda_tempat: {
+    kompetensi_sertifikat: {
         type: DataTypes.STRING,
-        allowNull: true
-    },
-    agenda_waktu: {
-        type: DataTypes.TIME,
-        allowNull: true
-    },
-    agenda_keterangan: {
-        type: DataTypes.STRING,
-        allowNull: true
-    },
-    agenda_pembuat: {
-        type: DataTypes.STRING,
-        allowNull: true
-    },
-    agenda_dibuat: {
-        type: DataTypes.DATE,
         allowNull: true
     },
 
@@ -53,4 +48,8 @@ const AgendaModel = db.define('agenda', {
 
 // console.log(User === db.models.User); // true
 
-module.exports = AgendaModel
+KompetensiModel.hasOne(bidang, { foreignKey: "bidang_id" })
+KompetensiModel.belongsTo(bidang, { foreignKey: "bidang_id" })
+
+
+module.exports = KompetensiModel

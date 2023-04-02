@@ -40,5 +40,7 @@ router.get('/penugasan', tokenValidate, controller.penugasan.show);
 
 router.get('/agenda', tokenValidate, controller.agenda.show);
 
+router.get('/kompetensi', tokenValidate, controller.kompetensi.show);
+
 
 module.exports = router
