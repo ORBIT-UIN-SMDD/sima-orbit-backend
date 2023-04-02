@@ -10,6 +10,7 @@ const PengumumanModel = require("./PengumumanModel")
 const PenugasanModel = require("./PenugasanModel")
 const PenugasanAnggotaModel = require("./PenugasanAnggotaModel")
 const PenugasanPengurusModel = require("./PenugasanPengurusModel")
+const AgendaModel = require("./AgendaModel")
 
 model.PengurusModel = PengurusModel
 model.AnggotaModel = AnggotaModel
@@ -21,5 +22,6 @@ model.PengumumanModel = PengumumanModel
 model.PenugasanModel = PenugasanModel
 model.PenugasanAnggotaModel = PenugasanAnggotaModel
 model.PenugasanPengurusModel = PenugasanPengurusModel
+model.AgendaModel = AgendaModel
 
 module.exports = model; 

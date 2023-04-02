@@ -101,7 +101,8 @@ controller.login = async (req, res) => {
                 messsage: "logged In",
                 token: token,
                 nim: anggota.nim,
-                name: anggota.name,
+                name: anggota.nama,
+                tipe: "anggota",
             });
         } else {
             res.status(400).json({ status: "failed", message: "Maaf akun mu belum aktif, silahkan hubungi pengurus ORBIT" })
@@ -122,7 +123,8 @@ controller.login = async (req, res) => {
             messsage: "logged In",
             token: token,
             nim: pengurus.nim,
-            name: pengurus.name,
+            name: pengurus.nama,
+            tipe: "pengurus",
         });
     } else if (alumni !== null) {
         // //check password
@@ -138,7 +140,8 @@ controller.login = async (req, res) => {
             messsage: "logged In",
             token: token,
             nim: alumni.nim,
-            name: alumni.name,
+            name: alumni.nama,
+            tipe: "alumni",
         });
     } else {
         res.status(400).json({ status: "failed", message: "NIM or password wrong!" })

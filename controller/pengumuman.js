@@ -45,7 +45,7 @@ controller.post = async function (req, res) {
 controller.show = async function (req, res) {
 
     const pengumuman = await model.PengumumanModel.findAll({
-
+        order: [['pengumuman_id', 'DESC']]
     })
 
     res.json({

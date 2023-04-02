@@ -34,9 +34,11 @@ router.get('/prodi', controller.prodi);
 router.get('/bidang', controller.bidang);
 
 router.post('/pengumuman/post', controller.pengumuman.post);
-router.get('/pengumuman', controller.pengumuman.show);
+router.get('/pengumuman', tokenValidate, controller.pengumuman.show);
 
-router.get('/penugasan', controller.penugasan.show);
+router.get('/penugasan', tokenValidate, controller.penugasan.show);
+
+router.get('/agenda', tokenValidate, controller.agenda.show);
 
 
 module.exports = router

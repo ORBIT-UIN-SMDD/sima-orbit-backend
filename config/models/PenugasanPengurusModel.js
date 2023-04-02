@@ -37,9 +37,9 @@ const PenugsanPengurusModel = db.define('penugasan_pengurus', {
 // console.log(User === db.models.User); // true
 
 PenugsanPengurusModel.hasOne(penugasan, { foreignKey: "penugasan_id" })
-PenugsanPengurusModel.hasOne(penugasan, { foreignKey: "penugasan_id" })
+PenugsanPengurusModel.belongsTo(penugasan, { foreignKey: "penugasan_id" })
 
 PenugsanPengurusModel.hasOne(pengurus, { foreignKey: "nim" })
-PenugsanPengurusModel.hasOne(pengurus, { foreignKey: "nim" })
+PenugsanPengurusModel.belongsTo(pengurus, { foreignKey: "nim" })
 
 module.exports = PenugsanPengurusModel
