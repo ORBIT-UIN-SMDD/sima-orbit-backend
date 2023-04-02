@@ -4,7 +4,7 @@ const db = require("../database/mysql");
 const bidang = require("./BidangModel")
 const anggota = require("./AnggotaModel")
 
-const KompetensiModel = db.define('Kompetensi', {
+const KompetensiModel = db.define('kompetensi', {
     // Model attributes are defined here
     sertifkat_no: {
         type: DataTypes.STRING,

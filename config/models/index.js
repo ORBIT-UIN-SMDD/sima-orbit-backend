@@ -1,6 +1,6 @@
 let model = {}
 
-const PengurusModel = require("./pengurusModel")
+const PengurusModel = require("./PengurusModel")
 const AnggotaModel = require("./AnggotaModel")
 const AlumniModel = require("./AlumniModel")
 const FakultasModel = require("./FakultasModel")

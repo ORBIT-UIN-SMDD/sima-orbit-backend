@@ -22,7 +22,9 @@ const upload = multer({ storage })
 //routes
 const controller = require("../controller/index")
 
-// router.get('/example', tokenValidate, controller.example.test);
+router.get('/', (req, res) => {
+    res.redirect('https://orbituinbkt.com');
+});
 
 router.post('/login', controller.auth.login);
 router.post('/register', upload.single('foto'), controller.auth.register);
