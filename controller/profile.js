@@ -30,11 +30,7 @@ controller.show = async function (req, res) {
     } else if (status == "alumni") {
         profile = await model.AlumniModel.findOne({
             where: { nim: nim },
-            include: [
-                { model: model.FakultasModel },
-                { model: model.ProdiModel },
-                { model: model.BidangModel },
-            ]
+            
         })
     }
 
@@ -50,8 +46,6 @@ controller.edit = async function (req, res) {
     const status = req.user.status
     const nim = req.user.nim
 
-    console.log("NIM  =====================" + nim);
-    console.log("JENIS STATUS =====================" + status);
 
     let profile = {};
     if (status == "anggota") {
@@ -65,11 +59,7 @@ controller.edit = async function (req, res) {
             where: { nim: nim }
         })
 
-        res.json({
-            status: "success",
-            message: "Berhasil Mengedit Profile",
-            profile
-        })
+
 
     } else if (status == "alumni") {
         profile = await model.AlumniModel.update(
@@ -78,7 +68,11 @@ controller.edit = async function (req, res) {
         })
     }
 
-
+    res.json({
+        status: "success",
+        message: "Berhasil Mengedit Profile",
+        profile
+    })
 
 };
 
