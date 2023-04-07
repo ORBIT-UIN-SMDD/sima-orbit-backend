@@ -7,7 +7,7 @@ const { today } = require("../helpers/date");
 const multer = require('multer')
 var storage = multer.diskStorage(
     {
-        destination: './uploads/',
+        destination: '../profile/anggota',
         filename: function (req, file, cb) {
             let extArray = file.mimetype.split("/");
             let extension = extArray[extArray.length - 1];
@@ -30,6 +30,7 @@ router.post('/login', controller.auth.login);
 router.post('/register', upload.single('foto'), controller.auth.register);
 
 router.get('/profile', tokenValidate, controller.profile.show);
+router.put('/profile/edit', tokenValidate, controller.profile.edit);
 
 router.get('/fakultas', controller.fakultas);
 router.get('/prodi', controller.prodi);

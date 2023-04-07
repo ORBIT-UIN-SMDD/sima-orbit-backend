@@ -47,29 +47,38 @@ controller.show = async function (req, res) {
 };
 controller.edit = async function (req, res) {
 
-    const status = req.query.status
-    const nim = req.query.nim
+    const status = req.user.status
+    const nim = req.user.nim
+
+    console.log("NIM  =====================" + nim);
+    console.log("JENIS STATUS =====================" + status);
 
     let profile = {};
     if (status == "anggota") {
-        profile = await model.AnggotaModel.update({
-
-        })
-    } else if (status == "pengurus") {
-        profile = await model.PengurusModel.findOne({
+        profile = await model.AnggotaModel.update(
+            req.body, {
             where: { nim: nim }
         })
+    } else if (status == "pengurus") {
+        profile = await model.PengurusModel.update(
+            req.body, {
+            where: { nim: nim }
+        })
+
+        res.json({
+            status: "success",
+            message: "Berhasil Mengedit Profile",
+            profile
+        })
+
     } else if (status == "alumni") {
-        profile = await model.AlumniModel.findOne({
+        profile = await model.AlumniModel.update(
+            req.body, {
             where: { nim: nim }
         })
     }
 
-    res.json({
-        status: "success",
-        message: "Berhasil mendapatkan profile",
-        profile
-    })
+
 
 };
 
