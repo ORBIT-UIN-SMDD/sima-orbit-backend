@@ -10,7 +10,7 @@ let controller = {}
 controller.register = async (req, res) => {
 
     const nim = req.body.nim
-    const foto = req.file !== undefined ? req.body.foto = req.file.path : ''
+    const foto = req.file !== undefined ? req.body.foto = req.file.filename : ''
     const nama = req.body.nama
     const tempat_lahir = req.body.tempat_lahir
     const tanggal_lahir = req.body.tanggal_lahir

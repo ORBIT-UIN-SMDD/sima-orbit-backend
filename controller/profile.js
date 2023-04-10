@@ -1,4 +1,6 @@
 const model = require("../config/models/index");
+const bcrypt = require('bcryptjs');
+
 
 let controller = {}
 
@@ -30,7 +32,7 @@ controller.show = async function (req, res) {
     } else if (status == "alumni") {
         profile = await model.AlumniModel.findOne({
             where: { nim: nim },
-            
+
         })
     }
 
@@ -46,24 +48,32 @@ controller.edit = async function (req, res) {
     const status = req.user.status
     const nim = req.user.nim
 
+    const body = req.body;
+
+    if (req.body.password == "" || req.body.password.lenght < 7) {
+        delete body.password
+    } else {
+        const salt = await bcrypt.genSalt(10)
+        body.password = await bcrypt.hash(body.password, salt)
+    }
+
+    console.log(body);
 
     let profile = {};
     if (status == "anggota") {
         profile = await model.AnggotaModel.update(
-            req.body, {
+            body, {
             where: { nim: nim }
         })
     } else if (status == "pengurus") {
         profile = await model.PengurusModel.update(
-            req.body, {
+            body, {
             where: { nim: nim }
         })
 
-
-
     } else if (status == "alumni") {
         profile = await model.AlumniModel.update(
-            req.body, {
+            body, {
             where: { nim: nim }
         })
     }
